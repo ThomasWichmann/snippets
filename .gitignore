@@ -1,0 +1,9 @@
+# Eclipse workspace directory
+RemoteSystemsTempFiles/
+.metadata/
+# Eclipse project files
+bin/
+.project
+
+# Maven build directory
+target/
