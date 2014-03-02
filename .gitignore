@@ -4,6 +4,8 @@ RemoteSystemsTempFiles/
 # Eclipse project files
 bin/
 .project
+.classpath
+.settings/
 
 # Maven build directory
 target/
