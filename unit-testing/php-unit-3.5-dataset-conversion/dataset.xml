@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<table name="table1">
+		<column>id</column>
+		<column>column1a</column>
+		<row>
+			<value>1</value>
+			<value>value1a</value>
+		</row>
+	</table>
+		<table name="table2">
+		<column>id</column>
+		<column>column2a</column>
+		<row>
+			<value>1</value>
+			<value>value2a</value>
+		</row>
+	</table>
+</dataset>
