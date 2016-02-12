@@ -9,3 +9,4 @@ bin/
 
 # Maven build directory
 target/
+/.pydevproject
