@@ -1,5 +1,5 @@
-Not yet usable!
 #!/usr/bin/env python3
+#Not yet usable!
 #
 # Converts a Joomla HTML page with standard templates into markdown syntax.
 # Only main content in converted and everything else removed.
@@ -12,7 +12,7 @@ import os
 import re
 import sys
 
-opts, args = getopt.getopt(sys.argv[1:], "d:n:v:")
+opts, args = getopt.getopt(sys.argv[1:], "nd:v")
 
 isReadOnly = False
 isVerbose = False
@@ -41,9 +41,10 @@ for subdir, dirs, files in os.walk(rootDirectory):
             print("Convert file :", path)
             input = open(path,'r') 
             content = input.read()
-            content = re.sub(r'', r'', content, 0, searchPatternSwitches)
+            content = re.sub(r'(?<=<body id="page_bg" class="color_blue bg_blue width_fmax">).*(?=<table class="contentpaneopen">)', r'', content, 1, searchPatternSwitches)
             if not isReadOnly:
-                output = open(path, 'w')
+                outputFile = os.path.join(subdir, "converted-" + file)
+                output = open(outputFile, 'w')
                 output.write(content)
         else:
             if isVerbose:
