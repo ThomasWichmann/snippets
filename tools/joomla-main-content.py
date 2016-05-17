@@ -26,13 +26,16 @@ for opt, arg in opts:
     if opt == "-v":
         isVerbose = True
 
-filePattern = ".*.html"
-searchPatternSwitches = re.MULTILINE
+filePattern = "Links.html"
+searchPatternSwitches = re.MULTILINE|re.DOTALL
 
 if not rootDirectory:
     raise ValueError("No directory to search for HTML files given.")
 
 print("Converting", rootDirectory, "for files like ", filePattern )
+
+def replaceTdByClass(html, classAttribute):
+    return re.sub(r'<td class="'+classAttribute+'"[^>]*>[^<]+</td>', r'', html, 1, searchPatternSwitches)
 
 for subdir, dirs, files in os.walk(rootDirectory):
     for file in files:
@@ -42,6 +45,11 @@ for subdir, dirs, files in os.walk(rootDirectory):
             input = open(path,'r') 
             content = input.read()
             content = re.sub(r'(?<=<body id="page_bg" class="color_blue bg_blue width_fmax">).*(?=<table class="contentpaneopen">)', r'', content, 1, searchPatternSwitches)
+            content = re.sub(r'Written by [^<]+', r'', content, 1)
+            content = replaceTdByClass(content, 'createdate')
+            content = replaceTdByClass(content, 'modifydate')
+            content = re.sub(r'(?<=<div id="footer">).*(?=</body>)', r'', content, 1, searchPatternSwitches)
+
             if not isReadOnly:
                 outputFile = os.path.join(subdir, "converted-" + file)
                 output = open(outputFile, 'w')
