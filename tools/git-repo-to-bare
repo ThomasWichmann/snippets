@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# Converts non bare repository to a bare one
+#
+
+set -o errexit
+
+if [ -z $1 ] ; then
+	echo "No repository path given" 
+	exit 1
+fi
+
+repoPath=$1
+tmpDir=`mktemp -d`
+
+cd $repoPath
+mv .git $tmpDir && rm -fr *
+mv $tmpDir/.git .
+mv .git/* .
+rmdir .git
+
+git config --bool core.bare true
+
+#cd ..; mv repo repo.git # renaming just for clarity
