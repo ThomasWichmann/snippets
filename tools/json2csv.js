@@ -6,6 +6,8 @@
  * 
  * No escaping of output data is done. The input data is assumed to be an array of objects. The objects should have 
  * all relevant fields in common. The number of columns in the CSV output is the sum over all different object fields.
+ * 
+ * The script can be easily adjusted to collect only certain fields - see commented out section below.
  */
 
 'use strict';
@@ -24,6 +26,14 @@ for (var i = 0; i < listLength; i++) {
 		properties[propt] = null;
 	}
 }
+
+/*
+ * Hard coded list of properties of interest.
+ */
+//properties = {
+//		propA: null,
+//		propB: null
+//} 
 
 var csvLine = "";
 for(var propt in properties) {
