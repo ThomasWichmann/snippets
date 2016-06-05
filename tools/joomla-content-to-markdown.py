@@ -37,10 +37,16 @@ print("Converting", rootDirectory, "for files like ", filePattern )
 def replaceTdByClass(html, classAttribute):
     return re.sub(r'<td class="'+classAttribute+'"[^>]*>[^<]+</td>', r'', html, 1, searchPatternSwitches)
 
+def replaceFileExtension(path, extension):
+    if path.find('.') == -1:
+        return path + extension
+    else:
+        return re.sub(r'.[^.]*$', extension, path)
+
 for subdir, dirs, files in os.walk(rootDirectory):
     for file in files:
         path = os.path.join(subdir, file)
-        if (re.match(r'^'+filePattern+'$', file)):
+        if re.match(r'^'+filePattern+'$', file):
             print("Convert file :", path)
             input = open(path,'r') 
             content = input.read()
@@ -50,10 +56,22 @@ for subdir, dirs, files in os.walk(rootDirectory):
             content = replaceTdByClass(content, 'modifydate')
             content = re.sub(r'(?<=<div id="footer">).*(?=</body>)', r'', content, 1, searchPatternSwitches)
 
+            outputFilename = "converted-" + file
+            outputPath = os.path.join(subdir, outputFilename)
+            mdPath = replaceFileExtension(outputPath, '.md')
+            pandocSystemCall = 'pandoc -s --metadata="generator:Wichmann joomla-content-to-markdown converter" -o ' + mdPath + ' ' + outputPath
+            print('Pandoc call: ', pandocSystemCall)
+            
             if not isReadOnly:
-                outputFile = os.path.join(subdir, "converted-" + file)
-                output = open(outputFile, 'w')
+                output = open(outputPath, 'w')
                 output.write(content)
+                os.system(pandocSystemCall)
+                mdInput = open(mdPath,'r') 
+                mdContent = mdInput.read()                
+                mdContent = mdContent.replace('\\','');
+                mdOutput = open(mdPath, 'w')
+                mdOutput.write(mdContent)
+
         else:
             if isVerbose:
                 print("No matching files found in ", path)
