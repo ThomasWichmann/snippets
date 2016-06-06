@@ -32,7 +32,7 @@ if not php_file:
     raise ValueError("No PHP include file given to search for by -f option")
 
 includePattern = r'(require_once|include_once|require|include)(\s*[(]?\s*[\'"][^\'"]*' + php_file + '[\'"]\s*[)]?\s*[;])'
-includePatternPattern = re.IGNORECASE|re.MULTILINE
+includePatternFlags = re.IGNORECASE|re.MULTILINE
 
 print("Converting", php_directory, "for PHP include", php_file)
 
@@ -42,13 +42,13 @@ for subdir, dirs, files in os.walk(php_directory):
         if (re.match(r'.*\.'+php_file_extension_pattern+'$', file)):
             input = open(path,'r') 
             code = input.read()
-            found = re.findall(includePattern, code, includePatternPattern)
+            found = re.findall(includePattern, code, includePatternFlags)
             if found:
                 for match in found:
                     print("PHP file with include for", php_file, ":", path, "with match:", ''.join(match))
                 if isDeletion:
                     print("PHP file with removed include for", php_file, ":", path)
-                    code = re.sub(includePattern, r'', code, 0, includePatternPattern)
+                    code = re.sub(includePattern, r'', code, 0, includePatternFlags)
                     output = open(path, 'w')
                     output.write(code)
         else:
