@@ -2,10 +2,11 @@
 /*
  * Fully read JSON file, parse included objects and output them as CSV using NodeJS.
  * 
- * Call it like json2csv.js test.json 
+ * Call it like json2csv.js test.json [objectName] [comma separated list of to be converted properties]
  * 
  * No escaping of output data is done. The input data is assumed to be an array of objects. The objects should have 
  * all relevant fields in common. The number of columns in the CSV output is the sum over all different object fields.
+ * The parameter objectName may point to a first level object included the array of interest (Json like {"object": [...]}).
  * 
  * The script can be easily adjusted to collect only certain fields - see commented out section below.
  */
@@ -17,14 +18,27 @@ var fs = require('fs');
 
 var text = fs.readFileSync(filename).toString();
 
-var list = JSON.parse(text);
+var list;
+if (process.argv[3]) {
+	var objectName = process.argv[3];
+	list = JSON.parse(text)[objectName];
+} else {
+	list = JSON.parse(text);
+}
 var listLength = list.length;
+
 var properties = {};
-for (var i = 0; i < listLength; i++) {
-	var obj = list[i];
-	for(var propt in obj){
-		properties[propt] = null;
+if (process.argv[4]) {	
+	process.argv[4].split(',').reduce(function fct(properties, name){properties[name]=null; return properties}, properties);
+} else {
+
+	for (var i = 0; i < listLength; i++) {
+		var obj = list[i];
+		for(var propt in obj) {
+			properties[propt] = null;
+		}
 	}
+
 }
 
 /*
