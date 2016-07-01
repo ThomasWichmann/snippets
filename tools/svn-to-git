@@ -1,0 +1,50 @@
+#!/bin/bash
+#
+# Converts a Subversion repository module into a Git repository
+# See also https://www.atlassian.com/git/tutorials/migrating-overview
+#
+# The new git repository is created in the current working directory.
+# The migration cleanup Java tool svn-migration-scripts.jar is assumed in same directory as this script.
+# 
+# A standard SVN module structure with folders trunk, tags, branches is assumed.
+# 
+USAGE='svn-to-git <SVN URL like https://svn.domain.com/repository/module/>'
+# 
+
+WORKING_DIR=`pwd`
+
+# Get to this script's directory:
+cd `dirname "$0"`
+BASE_DIR=`pwd`
+
+set -o errexit
+
+if [ -z $1 ] ; then
+	echo "No repository path given" 
+	echo $USAGE
+	exit 1
+fi
+SVN_REPOSITORY_MODULE_URL=$1
+
+cd $WORKING_DIR
+
+GIT_REPOSITORY_NAME=`basename $SVN_REPOSITORY_MODULE_URL`
+if [ -e $GIT_REPOSITORY_NAME ] ; then
+	echo "Directory '$GIT_REPOSITORY_NAME' already exists"
+	exit 2
+fi
+
+git svn clone --stdlayout --prefix=svn/ $SVN_REPOSITORY_MODULE_URL
+cd $GIT_REPOSITORY_NAME
+
+echo "Start cleanup ..."
+java -Dfile.encoding=utf-8 -jar $BASE_DIR/svn-migration-scripts.jar clean-git --force || echo "svn-migration-scripts.jar exits dirty bnt should be ok"
+echo "Cleanup finished"
+
+git show-branch -a --list
+
+# Does not create bare repo. Therefore:
+echo "Convert to bare repository ..."
+$BASE_DIR/git-repo-to-bare .
+echo "Migration finished for $SVN_REPOSITORY_MODULE_URL"
+
