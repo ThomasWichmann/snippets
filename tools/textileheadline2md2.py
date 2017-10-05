@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Aggressively convertes textile to markdown. Use with care.
+# Only converts textile headlines markup "h1., h2., ..." into markdown header
 #
 
 import re
@@ -8,6 +8,7 @@ import sys
 import os
 import pathlib
 import fileinput
+import shutil
 
 filename = sys.argv[1]
 
@@ -17,15 +18,12 @@ if not pathlib.Path(filename).suffix == ".textile":
     raise Exception("File ", filename, " has wrong extension. It is no textile file.")
 
 outputFilename = re.sub(r'\.textile$', ".md", filename)
-os.system("pandoc --no-wrap -o " + outputFilename + " " + filename)    
+shutil.copyfile(filename, outputFilename)
+
+def headerRepl(matchobj):
+    return ''.rjust(int(matchobj.group(1)),'#')
 
 # Do some extra custom and aggressive cleanup
 for line in fileinput.input(outputFilename, inplace=True):
-    line = re.sub(r'\\$', "", line)
-    line = re.sub(r'\\[_:#>$]', "", line)
-    line = re.sub(r'~~', "-", line)
-    line = re.sub(r'\\\*', "*", line)
-    line = re.sub(r'h2\.', "##", line)
-    line = re.sub(r'h3\.', "###", line)
-    line = re.sub(r'h4\.', "####", line)
+    line = re.sub(r'h([1-5])\.', headerRepl, line)
     sys.stdout.write(line)
