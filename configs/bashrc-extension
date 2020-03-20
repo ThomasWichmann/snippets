@@ -1,0 +1,25 @@
+
+
+# extend PATH by home bin folder and local working directory sub-folders "bin" and "tools"
+# Are you sure about this?
+#export PATH=$PATH:~/bin:~/bin:./tools:
+
+
+# Some common aliases:
+
+alias ls="ls -F --color"
+alias ll='ls -alF'
+
+# Special python tool aliases
+
+alias urldecode='python -c "import sys, urllib as ul; \
+    print ul.unquote_plus(sys.argv[1])"'
+alias urlencode='python -c "import sys, urllib as ul; \
+    print ul.quote_plus(sys.argv[1])"'
+alias jsonformat='python -m json.tool'
+
+
+
+
+
+
