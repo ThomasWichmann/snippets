@@ -4,7 +4,6 @@
 # Are you sure about this?
 #export PATH=$PATH:~/bin:~/bin:./tools:
 
-
 # Some common aliases:
 
 alias ls="ls -F --color"
