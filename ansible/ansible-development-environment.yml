@@ -1,0 +1,30 @@
+---
+# Install additional packages for development Java and other apps
+#
+# requirements: ansible needs to be installed
+# uses "hosts" file for inventary
+# run with:
+# ansible-playbook -K ansible-development.yml
+#
+- name: Customize development environment
+  hosts: 127.0.0.1
+  connection: local
+  become: true
+  
+  vars:
+    pkgs:
+      - rsync
+      - git
+      - subversion
+      - curl
+      - php
+      - openjdk-11-jdk
+      - gradle
+      - maven
+
+
+  tasks:
+  - name: install pre-selected packages for development
+    package: name={{ pkgs }} state=present  
+
+...
