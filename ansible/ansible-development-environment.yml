@@ -4,7 +4,7 @@
 # requirements: ansible needs to be installed
 # uses "hosts" file for inventary
 # run with:
-# ansible-playbook -K ansible-development.yml
+# ansible-playbook -K ansible-development-environment.yml
 #
 - name: Customize development environment
   hosts: 127.0.0.1
@@ -21,6 +21,8 @@
       - openjdk-11-jdk
       - gradle
       - maven
+      - pwgen # for generating random passwords
+      - pandoc # for converting documents, for example MD to ODT
 
 
   tasks:
