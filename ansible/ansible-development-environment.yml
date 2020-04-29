@@ -18,6 +18,7 @@
       - subversion
       - curl
       - php
+      - php-dom
       - openjdk-11-jdk
       - gradle
       - maven
