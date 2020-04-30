@@ -18,7 +18,8 @@
       - subversion
       - curl
       - php
-      - php-dom
+      - "php-xml"
+      - "php-sqlite3"
       - openjdk-11-jdk
       - gradle
       - maven
