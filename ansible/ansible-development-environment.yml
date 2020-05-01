@@ -20,6 +20,7 @@
       - php
       - "php-xml"
       - "php-sqlite3"
+      - "php-zip"
       - openjdk-11-jdk
       - gradle
       - maven
