@@ -2,7 +2,6 @@
 # Install additional packages for development Java and other apps
 #
 # requirements: ansible needs to be installed
-# uses "hosts" file for inventary
 # run with:
 # ansible-playbook -K ansible-development-environment.yml
 #
