@@ -1,0 +1,30 @@
+---
+# Install additional packages for debian, which cannot be found
+# in standard Debian repositories.
+#
+# requirements: ansible needs to be installed
+# run with:
+# ansible-playbook -K ansible-debian-extra-packages.yml
+#
+- name: Custom packages installation
+  hosts: 127.0.0.1
+  connection: local
+  become: true   
+
+  tasks:
+   - name: Add custom ms-teams repository
+     shell: echo 'deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main' | tee -a /etc/apt/sources.list.d/teams.list
+   - name: Add custom key for apt
+     # for proxy add: --proxy http://proxy_domain:port 
+     shell: curl -sL "https://packages.microsoft.com/keys/microsoft.asc" | apt-key add
+   - name: Update repositories cache
+     apt:
+       update_cache: yes
+   - name: install
+     package:
+       name: "{{ item }}"
+       state: present
+     loop:
+       - teams
+
+...

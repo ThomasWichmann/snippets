@@ -1,5 +1,5 @@
 ---
-# Install additional packages for development Java and other apps
+# Install additional packages for Scala / sbt development
 #
 # requirements: ansible needs to be installed
 # run with:
@@ -18,7 +18,7 @@
    - name: Update repositories cache
      apt:
        update_cache: yes
-   - name: install ...
+   - name: install
      package:
        name: "{{ item }}"
        state: present
