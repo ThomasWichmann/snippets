@@ -13,7 +13,7 @@
 
   tasks:
    - name: Add custom ms-teams repository
-     shell: echo 'deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main' | tee -a /etc/apt/sources.list.d/teams.list
+     shell: echo 'deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main' | tee /etc/apt/sources.list.d/teams.list
    - name: Add custom key for apt
      # for proxy add: --proxy http://proxy_domain:port 
      shell: curl -sL "https://packages.microsoft.com/keys/microsoft.asc" | apt-key add

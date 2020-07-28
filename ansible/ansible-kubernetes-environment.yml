@@ -15,7 +15,7 @@
   
   
    - name: Add custom kubernetes repository
-     shell: echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
+     shell: echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
    - name: Add custom key for apt
      shell: curl "https://packages.cloud.google.com/apt/doc/apt-key.gpg" | apt-key add -
    - name: Update repositories cache
@@ -30,7 +30,7 @@
        - kubectl
        
    - name: Add custom helm repository
-     shell: echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee -a /etc/apt/sources.list.d/helm.list
+     shell: echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm.list
    - name: Add custom key for apt
      shell: curl "https://helm.baltorepo.com/organization/signing.asc" | apt-key add -
    - name: Update repositories cache
