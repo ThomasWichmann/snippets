@@ -31,4 +31,15 @@
   - name: install pre-selected packages for development
     package: name={{ pkgs }} state=present  
 
+  - name: Install additional python modules
+    pip:
+       name: "{{ item }}"
+    loop:
+      - ansible-lint # lint playbooks
+    environment:
+      # In case of behing proxy environments pip requires proxy settings in 
+      # capitalized variables. 
+      #HTTP_PROXY: http://proxy.example.domain:8080
+      #HTTPS_PROXY: http://proxy.example.domain:8080
+
 ...
