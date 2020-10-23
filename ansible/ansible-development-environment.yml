@@ -17,10 +17,15 @@
       - subversion
       - curl
       - php
-      - "php-xml"
-      - "php-sqlite3"
-      - "php-zip"
+      - php-curl
+      - php-mbstring
+      - php-xml
+      - php-redis
+      - php-sqlite3
+      - php-zip
+      - php-soap
       - openjdk-11-jdk
+      - openjdk-11-source
       - gradle
       - maven
       - pwgen # for generating random passwords
