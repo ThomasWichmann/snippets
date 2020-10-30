@@ -1,0 +1,21 @@
+---
+# Customization and extensions to the GNOME desktop.
+#
+# So far just a special custom app launcher for Eclipse installed in /opt/eclipse.
+#
+# requirements: ansible needs to be installed
+# run with:
+# ansible-playbook -K ansible-gnome-customize.yml
+#
+- name: Customize GNOME desktop
+  hosts: 127.0.0.1
+  connection: local
+  become: true   
+
+  tasks:
+   - name: Copy Eclipse application launcher 
+     copy:
+       src: "{{ playbook_dir }}/files/eclipse-custom.desktop"
+       dest: /usr/share/applications/
+   
+...
