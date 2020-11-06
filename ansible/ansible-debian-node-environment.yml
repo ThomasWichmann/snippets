@@ -1,0 +1,28 @@
+---
+# Install additional packages for an update to date NodeJS development
+# Installs newer version of Nodejs from external repository.
+#
+# requirements: ansible needs to be installed
+# run with:
+# ansible-playbook -K ansible-debian-node-environment.yml
+#
+- name: Customize Nodejs environment on Debian
+  hosts: 127.0.0.1
+  connection: local
+  become: true   
+
+  tasks:
+   - name: Add custom Nodejs repository
+     shell: curl -sL https://deb.nodesource.com/setup_14.x | bash -
+   - name: Update repositories cache
+     apt:
+       update_cache: yes
+   - name: install
+     apt:
+       name: "{{ item }}"
+       force: yes
+       state: latest
+     loop:
+       - nodejs
+
+...
