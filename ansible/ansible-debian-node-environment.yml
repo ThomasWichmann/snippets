@@ -2,6 +2,8 @@
 # Install additional packages for an update to date NodeJS development
 # Installs newer version of Nodejs from external repository.
 #
+# Setup for Debian buster
+#
 # requirements: ansible needs to be installed
 # run with:
 # ansible-playbook -K ansible-debian-node-environment.yml
@@ -12,17 +14,29 @@
   become: true   
 
   tasks:
-   - name: Add custom Nodejs repository
-     shell: curl -sL https://deb.nodesource.com/setup_14.x | bash -
-   - name: Update repositories cache
-     apt:
-       update_cache: yes
-   - name: install
-     apt:
-       name: "{{ item }}"
-       force: yes
-       state: latest
-     loop:
+      
+    - name: Add an apt signing key nodesource
+      apt_key:
+        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+        state: present
+      environment:
+      #  https_proxy: "https://some-proxy-host:proxy-port"
+    
+    - name: Add custom Nodejs repository
+      apt_repository:
+        repo: "{{ item }} buster main"
+        state: present
+        filename: nodejs
+      loop:
+       - "deb https://deb.nodesource.com/node_14.x"
+       - "deb-src https://deb.nodesource.com/node_14.x"
+           
+    - name: install packages
+      package:
+         name: "{{ item }}"
+         state: latest
+         force: yes
+      loop:
        - nodejs
-
-...
+     
+  
