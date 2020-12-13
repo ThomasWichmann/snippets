@@ -1,0 +1,64 @@
+---
+# Install current docker version with its own repository on Debian
+#
+# requirements: ansible needs to be installed
+# ref: https://docs.docker.com/engine/install/debian/
+# run with:
+# ansible-playbook -K ansible-debian-docker.yml
+#
+- name: Setup Docker environment
+  hosts: 127.0.0.1
+  connection: local
+  become: true   
+
+  tasks:
+    - name: install required standard packages
+      package: 
+        name={{ item }} 
+        state=present  
+      loop:
+       # for docker
+       - apt-transport-https
+       - ca-certificates
+       - curl
+       - gnupg-agent
+       - software-properties-common
+       # for docker compose
+       - python-pip
+       - python-dev
+       - libffi-dev
+       - libssl-dev
+       - gcc
+       - libc-dev
+       - make
+       
+    - name: Add an apt signing key 
+      apt_key:
+        url: https://download.docker.com/linux/debian/gpg
+        state: present
+        id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+      # in case of proxy
+      #environment:
+      #  https_proxy: http://proxy_domain:port
+
+    - name: Add custom repository
+      apt_repository:
+        repo: "{{ item }} buster stable"
+        state: present
+        filename: docker
+      loop:
+        - "deb https://download.docker.com/linux/debian"
+        
+    - name: install packages
+      package: 
+        name={{ item }} 
+        state=present  
+      loop:
+       - docker-ce
+       - docker-ce-cli
+       - containerd.io
+        
+    - name: Install docker composer binary directly without package
+      # for proxy add: --proxy http://proxy_domain:port 
+      shell: curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        
