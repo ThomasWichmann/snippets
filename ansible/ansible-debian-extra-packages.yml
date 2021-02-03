@@ -5,12 +5,17 @@
 # requirements: ansible needs to be installed
 # run with:
 # ansible-playbook -K ansible-debian-extra-packages.yml
+# only standard package install
+# ansible-playbook -K ansible-debian-extra-packages.yml --tags standard-packages
 #
-- name: Custom packages installation
+- name: Additional packages installation - both custom and from standard repository
   hosts: 127.0.0.1
   connection: local
   become: true   
-
+  vars:
+    pkgs:
+      - seahorse-nautilus # for encryion within nautilus file manager
+ 
   tasks:
   
    - name: Add custom repository
@@ -32,5 +37,10 @@
        state: present
      loop:
        - teams
+
+   - name: install standard packages
+     package: name={{ pkgs }} state=present
+     tags: 
+      - standard-packages
 
 ...

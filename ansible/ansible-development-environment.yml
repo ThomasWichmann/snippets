@@ -32,10 +32,11 @@
       - pandoc # for converting documents, for example MD to ODT
       - poedit # for editing gettext translations
       - libxml2-utils # xmllint
+      - python3-pip # for python modules
 
 
   tasks:
-  - name: install pre-selected packages for development
+  - name: install packages for development
     package: name={{ pkgs }} state=present  
 
   - name: Install additional python modules
