@@ -12,14 +12,20 @@
   become: true   
 
   tasks:
-   - name: Add custom ms-teams repository
-     shell: echo 'deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main' | tee /etc/apt/sources.list.d/teams.list
-   - name: Add custom key for apt
+  
+   - name: Add custom repository
+     apt_repository:
+       repo: "{{ item }}"
+       state: present
+     loop:
+        - "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main"
+
+   - name: Add an apt signing key 
      # for proxy add: --proxy http://proxy_domain:port 
-     shell: curl -sL "https://packages.microsoft.com/keys/microsoft.asc" | apt-key add
-   - name: Update repositories cache
-     apt:
-       update_cache: yes
+     apt_key:
+      url: https://packages.microsoft.com/keys/microsoft.asc
+      state: present
+
    - name: install
      package:
        name: "{{ item }}"
