@@ -24,6 +24,7 @@
       - php-sqlite3
       - php-zip
       - php-soap
+      - composer # for php
       - openjdk-11-jdk
       - openjdk-11-source
       - gradle
