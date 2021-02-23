@@ -31,12 +31,55 @@
        - "deb https://deb.nodesource.com/node_14.x"
        - "deb-src https://deb.nodesource.com/node_14.x"
            
-    - name: install packages
+    - name: install nodejs packages
       package:
          name: "{{ item }}"
          state: latest
          force: yes
       loop:
        - nodejs
-     
   
+    - name: install system dependencies for Cypress
+      package:
+         name: "{{ item }}"
+         state: latest
+         force: yes
+      loop:
+       - nodejs
+       - libgtk2.0-0 
+       - libgtk-3-0 
+       - libgbm-dev 
+       - libnotify-dev 
+       - libgconf-2-4 
+       - libnss3 
+       - libxss1 
+       - libasound2
+       - libxtst6
+       - xauth
+       - xvfb
+       
+
+    - name: Add an apt signing key for yarn
+      apt_key:
+        url: https://dl.yarnpkg.com/debian/pubkey.gpg
+        state: present
+      environment:
+      #  https_proxy: "https://some-proxy-host:proxy-port"
+
+    - name: Add custom yarn repository
+      apt_repository:
+        repo: "{{ item }} buster main"
+        state: present
+        filename: nodejs
+      loop:
+       - "deb https://dl.yarnpkg.com/debian/ stable main"
+         
+    - name: install yarn packages
+      package:
+         name: "{{ item }}"
+         state: latest
+         force: yes
+      loop:
+       - yarn
+  
+       
