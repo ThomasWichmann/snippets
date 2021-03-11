@@ -18,6 +18,7 @@
       - curl
       - php
       - php-curl
+      - php-gd
       - php-mbstring
       - php-xml
       - php-redis
