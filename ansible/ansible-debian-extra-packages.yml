@@ -15,7 +15,8 @@
   vars:
     pkgs:
       - seahorse-nautilus # for encryion within nautilus file manager
- 
+      - rustc # for example for keyring for pyhton
+          
   tasks:
 
    - name: Add an apt signing key 
