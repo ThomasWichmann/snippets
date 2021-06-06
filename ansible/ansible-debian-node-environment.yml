@@ -24,12 +24,12 @@
     
     - name: Add custom Nodejs repository
       apt_repository:
-        repo: "{{ item }} buster main"
+        repo: "{{ item }}"
         state: present
         filename: nodejs
       loop:
-       - "deb https://deb.nodesource.com/node_14.x"
-       - "deb-src https://deb.nodesource.com/node_14.x"
+       - "deb https://deb.nodesource.com/node_14.x buster main"
+       - "deb-src https://deb.nodesource.com/node_14.x buster main"
            
     - name: install nodejs packages
       package:
@@ -68,7 +68,7 @@
 
     - name: Add custom yarn repository
       apt_repository:
-        repo: "{{ item }} buster main"
+        repo: "{{ item }}"
         state: present
         filename: nodejs
       loop:
