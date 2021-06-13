@@ -16,6 +16,7 @@
     pkgs:
       - seahorse-nautilus # for encryion within nautilus file manager
       - rustc # for example for keyring for pyhton
+      - dos2unix # for line ending conversions
           
   tasks:
 
