@@ -81,5 +81,18 @@
          force: yes
       loop:
        - yarn
-  
-       
+        
+    - name: Download Node Version Manager for handling multiple node versions see https://github.com/nvm-sh/nvm
+      get_url: 
+        url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh
+        dest: /tmp/nvm-install.sh
+        mode: 0755
+      become: false
+      tags:
+       - nvm
+    - name: Install Node Version Manager for handling multiple node versions for current user
+      shell: /tmp/nvm-install.sh
+      become: false
+      tags:
+       - nvm
+      
