@@ -57,7 +57,15 @@
        - libxtst6
        - xauth
        - xvfb
-       
+
+    - name: Install node.js packages globally
+      npm:
+        name: "{{ item }}"
+        global: yes
+      loop: 
+       - gulp-cli
+      tags:
+       - node-libs
 
     - name: Add an apt signing key for yarn
       apt_key:
