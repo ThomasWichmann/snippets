@@ -11,7 +11,9 @@
 - name: Customize Nodejs environment on Debian
   hosts: 127.0.0.1
   connection: local
-  become: true   
+  become: true
+  vars:
+    distribution: bullseye
 
   tasks:
       
@@ -24,7 +26,7 @@
     
     - name: Add custom Nodejs repository
       apt_repository:
-        repo: "{{ item }} buster main"
+        repo: "{{ item }} {{ distribution }} main"
         state: present
         filename: nodejs
       loop:
