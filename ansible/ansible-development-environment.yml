@@ -18,12 +18,14 @@
       - curl
       - php
       - php-curl
+      - php-gd
       - php-mbstring
       - php-xml
       - php-redis
       - php-sqlite3
       - php-zip
       - php-soap
+      - composer # for php
       - openjdk-11-jdk
       - openjdk-11-source
       - gradle
@@ -33,8 +35,9 @@
       - poedit # for editing gettext translations
       - libxml2-utils # xmllint
       - python3-pip # for python modules
-
-
+      - libcanberra-gtk-module # for Netbeans 12
+      - libcanberra-gtk3-module # for Netbeans 12
+      
   tasks:
   - name: install packages for development
     package: name={{ pkgs }} state=present  

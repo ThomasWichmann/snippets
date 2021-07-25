@@ -15,22 +15,41 @@
   vars:
     pkgs:
       - seahorse-nautilus # for encryion within nautilus file manager
- 
+      - rustc # for example for keyring for pyhton
+      - dos2unix # for line ending conversions
+          
   tasks:
-   - name: Add custom ms-teams repository
-     shell: echo 'deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main' | tee /etc/apt/sources.list.d/teams.list
-   - name: Add custom key for apt
+
+   - name: Add an apt signing key 
      # for proxy add: --proxy http://proxy_domain:port 
-     shell: curl -sL "https://packages.microsoft.com/keys/microsoft.asc" | apt-key add
-   - name: Update repositories cache
+     apt_key:
+      url: "{{ item }}"
+      state: present
+     loop:
+      - https://packages.microsoft.com/keys/microsoft.asc  # for MS teams
+      - https://apt.releases.hashicorp.com/gpg # terraform
+
+   - name: Add custom repository
+     apt_repository:
+       repo: "{{ item }}"
+       state: present
+     loop:
+        - "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main"
+        - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ buster main"  # for powershell
+        - "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" # terraform
+
+   - name: Add an apt signing key by deb package 
      apt:
-       update_cache: yes
+       deb: https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb # for powershell
+       
    - name: install
      package:
        name: "{{ item }}"
        state: present
      loop:
        - teams
+       - powershell
+       - terraform
 
    - name: install standard packages
      package: name={{ pkgs }} state=present

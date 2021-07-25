@@ -43,11 +43,11 @@
 
     - name: Add custom repository
       apt_repository:
-        repo: "{{ item }} buster stable"
+        repo: "{{ item }}"
         state: present
         filename: docker
       loop:
-        - "deb https://download.docker.com/linux/debian"
+        - "deb https://download.docker.com/linux/debian buster stable"
         
     - name: install packages
       package: 

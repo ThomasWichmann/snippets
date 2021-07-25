@@ -26,19 +26,83 @@
     
     - name: Add custom Nodejs repository
       apt_repository:
-        repo: "{{ item }} {{ distribution }} main"
+        repo: "{{ item }}"
         state: present
         filename: nodejs
       loop:
-       - "deb https://deb.nodesource.com/node_14.x"
-       - "deb-src https://deb.nodesource.com/node_14.x"
+       - "deb https://deb.nodesource.com/node_14.x {{ distribution }} main"
+       - "deb-src https://deb.nodesource.com/node_14.x {{ distribution }} main"
            
-    - name: install packages
+    - name: install nodejs packages
       package:
          name: "{{ item }}"
          state: latest
          force: yes
       loop:
        - nodejs
-     
   
+    - name: install system dependencies for Cypress
+      package:
+         name: "{{ item }}"
+         state: latest
+         force: yes
+      loop:
+       - nodejs
+       - libgtk2.0-0 
+       - libgtk-3-0 
+       - libgbm-dev 
+       - libnotify-dev 
+       - libgconf-2-4 
+       - libnss3 
+       - libxss1 
+       - libasound2
+       - libxtst6
+       - xauth
+       - xvfb
+
+    - name: Install node.js packages globally
+      npm:
+        name: "{{ item }}"
+        global: yes
+      loop: 
+       - gulp-cli
+      tags:
+       - node-libs
+
+    - name: Add an apt signing key for yarn
+      apt_key:
+        url: https://dl.yarnpkg.com/debian/pubkey.gpg
+        state: present
+      environment:
+      #  https_proxy: "https://some-proxy-host:proxy-port"
+
+    - name: Add custom yarn repository
+      apt_repository:
+        repo: "{{ item }}"
+        state: present
+        filename: nodejs
+      loop:
+       - "deb https://dl.yarnpkg.com/debian/ stable main"
+         
+    - name: install yarn packages
+      package:
+         name: "{{ item }}"
+         state: latest
+         force: yes
+      loop:
+       - yarn
+        
+    - name: Download Node Version Manager for handling multiple node versions see https://github.com/nvm-sh/nvm
+      get_url: 
+        url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh
+        dest: /tmp/nvm-install.sh
+        mode: 0755
+      become: false
+      tags:
+       - nvm
+    - name: Install Node Version Manager for handling multiple node versions for current user
+      shell: /tmp/nvm-install.sh
+      become: false
+      tags:
+       - nvm
+      
