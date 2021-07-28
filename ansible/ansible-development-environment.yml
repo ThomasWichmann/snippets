@@ -37,6 +37,7 @@
       - python3-pip # for python modules
       - libcanberra-gtk-module # for Netbeans 12
       - libcanberra-gtk3-module # for Netbeans 12
+      - emacs
       
   tasks:
   - name: install packages for development
