@@ -38,6 +38,9 @@
       - libcanberra-gtk-module # for Netbeans 12
       - libcanberra-gtk3-module # for Netbeans 12
       - emacs
+      - openfortivpn # VPN client for Forti
+      - net-tools # for netstat etc
+      - rdesktop # for remote access to Windows 
       
   tasks:
   - name: install packages for development
