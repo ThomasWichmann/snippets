@@ -11,7 +11,9 @@
 - name: Customize Nodejs environment on Debian
   hosts: 127.0.0.1
   connection: local
-  become: true   
+  become: true
+  vars:
+    distribution: bullseye
 
   tasks:
       
@@ -28,8 +30,8 @@
         state: present
         filename: nodejs
       loop:
-       - "deb https://deb.nodesource.com/node_14.x buster main"
-       - "deb-src https://deb.nodesource.com/node_14.x buster main"
+       - "deb https://deb.nodesource.com/node_14.x {{ distribution }} main"
+       - "deb-src https://deb.nodesource.com/node_14.x {{ distribution }} main"
            
     - name: install nodejs packages
       package:
