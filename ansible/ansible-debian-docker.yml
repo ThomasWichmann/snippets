@@ -60,5 +60,11 @@
         
     - name: Install docker composer binary directly without package
       # for proxy add: --proxy http://proxy_domain:port 
-      shell: curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-        
+      get_url: 
+        url: https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: '0755'
+      tags:
+        - composer
+
+
