@@ -41,6 +41,7 @@
       - openfortivpn # VPN client for Forti
       - net-tools # for netstat etc
       - rdesktop # for remote access to Windows 
+      - ffmpeg # for video processing tools
       
   tasks:
   - name: install packages for development
