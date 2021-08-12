@@ -42,6 +42,7 @@
       - net-tools # for netstat etc
       - rdesktop # for remote access to Windows 
       - ffmpeg # for video processing tools
+      - snapd # for futher snaps
       
   tasks:
   - name: install packages for development
@@ -57,5 +58,11 @@
       # capitalized variables. 
       #HTTP_PROXY: http://proxy.example.domain:8080
       #HTTPS_PROXY: http://proxy.example.domain:8080
+
+#  - name: install snaps for development
+#    community.general.snap: 
+#       name: "{{ item }}"
+#    loop:
+#      - postman # for web api testing
 
 ...
