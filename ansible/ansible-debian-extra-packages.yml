@@ -49,6 +49,7 @@
      loop:
        - teams
        - powershell
+       - azure-cli
        - terraform
 
    - name: install standard packages
