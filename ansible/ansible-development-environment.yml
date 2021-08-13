@@ -43,6 +43,7 @@
       - rdesktop # for remote access to Windows 
       - ffmpeg # for video processing tools
       - snapd # for futher snaps
+      - clamav # antivirus tool
       
   tasks:
   - name: install packages for development
