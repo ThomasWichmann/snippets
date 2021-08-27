@@ -37,6 +37,7 @@
         - "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main"
         - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ buster main"  # for powershell
         - "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" # terraform
+        - "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
 
    - name: Add an apt signing key by deb package 
      apt:
@@ -51,6 +52,7 @@
        - powershell
        - azure-cli
        - terraform
+       - code # Visual Studio Code
 
    - name: install standard packages
      package: name={{ pkgs }} state=present
