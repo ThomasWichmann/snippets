@@ -44,6 +44,7 @@
       - ffmpeg # for video processing tools
       - snapd # for futher snaps
       - clamav # antivirus tool
+      - default-mysql-client
       
   tasks:
   - name: install packages for development
