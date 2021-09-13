@@ -45,6 +45,8 @@
       - snapd # for futher snaps
       - clamav # antivirus tool
       - default-mysql-client
+      - diffuse # visual diff tool
+      - whois
       
   tasks:
   - name: install packages for development
