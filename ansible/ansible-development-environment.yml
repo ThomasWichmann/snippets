@@ -48,6 +48,7 @@
       - diffuse # visual diff tool
       - whois
       - adoptopenjdk-8-hotspot
+      - filezilla
       
   tasks:
   
