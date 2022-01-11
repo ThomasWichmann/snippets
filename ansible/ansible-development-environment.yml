@@ -49,6 +49,7 @@
       - whois
       - adoptopenjdk-8-hotspot
       - filezilla
+      - qpdf # for checking PDF form fields
       
   tasks:
   
