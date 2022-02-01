@@ -17,6 +17,11 @@ alias urlencode='python -c "import sys, urllib as ul; \
     print ul.quote_plus(sys.argv[1])"'
 alias jsonformat='python -m json.tool'
 
+# SSH connection into Azure app service container
+alias sshazureapp='sshpass -p "Docker!" ssh root@127.0.0.1 -o "StrictHostKeyChecking no" -p '
+
+# Show process binding port: usage netstatportprocess [port]
+alias netstatportprocess='netstat -nlp | grep '
 
 
 
