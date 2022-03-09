@@ -28,6 +28,7 @@
       - composer # for php
       - openjdk-11-jdk
       - openjdk-11-source
+      - adoptopenjdk-11-hotspot
       - gradle
       - maven
       - pwgen # for generating random passwords
