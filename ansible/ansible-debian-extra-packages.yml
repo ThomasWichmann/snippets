@@ -38,7 +38,8 @@
         - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ buster main"  # for powershell
         - "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" # terraform
         - "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
-
+        - "deb [arch=amd64,armhf,arm64] https://packages.microsoft.com/debian/11/prod bullseye main"
+        
    - name: Add an apt signing key by deb package 
      apt:
        deb: https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb # for powershell
@@ -53,6 +54,10 @@
        - azure-cli
        - terraform
        - code # Visual Studio Code
+       - dotnet-sdk-6.0
+       - dotnet-runtime-6.0
+       - dotnet-sdk-3.1
+       - dotnet-runtime-3.1
 
    - name: install standard packages
      package: name={{ pkgs }} state=present

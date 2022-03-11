@@ -83,10 +83,10 @@
       #HTTP_PROXY: http://proxy.example.domain:8080
       #HTTPS_PROXY: http://proxy.example.domain:8080
 
-#  - name: install snaps for development
-#    community.general.snap: 
-#       name: "{{ item }}"
-#    loop:
-#      - postman # for web api testing
+  - name: install snaps for development
+    community.general.snap: 
+       name: "{{ item }}"
+    loop:
+      - postman # for web api testing
 
 ...
