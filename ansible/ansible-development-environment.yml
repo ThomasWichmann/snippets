@@ -33,6 +33,8 @@
       - maven
       - pwgen # for generating random passwords
       - pandoc # for converting documents, for example MD to ODT
+      - texlive-latex-recommended # helper packages for pandoc 
+      - texlive-latex-extra # helper packages for pandoc 
       - poedit # for editing gettext translations
       - libxml2-utils # xmllint
       - python3-pip # for python modules
