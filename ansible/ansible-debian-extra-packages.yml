@@ -38,12 +38,7 @@
         - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ buster main"  # for powershell
         - "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" # terraform
         - "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
-        - "deb [arch=amd64,armhf,arm64] https://packages.microsoft.com/debian/11/prod bullseye main"
         
-   - name: Add an apt signing key by deb package 
-     apt:
-       deb: https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb # for powershell
-       
    - name: install
      package:
        name: "{{ item }}"
