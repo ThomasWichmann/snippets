@@ -64,13 +64,15 @@
      state: present
     loop:
      - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public
+     - https://packages.sury.org/php/apt.gpg
       
   - name: Add custom repository
     apt_repository:
       repo: "{{ item }}"
       state: present
     loop:
-       - "deb [arch=amd64] https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ buster main" # for JDK 8 adoptopenjdk-8-hotspot
+       - "deb [arch=amd64] https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ bullseye main" # for JDK 8 adoptopenjdk-8-hotspot
+       - "deb https://packages.sury.org/php/ bullseye main" # for JDK 8 adoptopenjdk-8-hotspot
       
   - name: install packages for development
     package: name={{ pkgs }} state=present  
