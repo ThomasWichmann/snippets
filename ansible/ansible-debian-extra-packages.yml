@@ -38,6 +38,7 @@
         - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ buster main"  # for powershell
         - "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" # terraform
         - "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
+        - "deb [arch=amd64] https://packages.microsoft.com/debian/11/prod bullseye main"
         
    - name: install
      package:
@@ -53,6 +54,7 @@
        - dotnet-runtime-6.0
        - dotnet-sdk-3.1
        - dotnet-runtime-3.1
+       - azure-functions-core-tools-4
 
    - name: install standard packages
      package: name={{ pkgs }} state=present
