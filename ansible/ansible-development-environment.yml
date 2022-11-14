@@ -100,5 +100,6 @@
        name: "{{ item }}"
     loop:
       - postman # for web api testing
+      - slack # team collaboration
 
 ...
