@@ -59,6 +59,9 @@
       
   tasks:
   
+  - name: First instal additional key package
+    package: name=fasttrack-archive-keyring state=present  
+
   - name: Add an apt signing key 
     # for proxy add: --proxy http://proxy_domain:port 
     apt_key:
