@@ -47,7 +47,7 @@
         state: present
         filename: docker
       loop:
-        - "deb https://download.docker.com/linux/debian buster stable"
+        - "deb https://download.docker.com/linux/debian bullseye stable"
         
     - name: install packages
       package: 
