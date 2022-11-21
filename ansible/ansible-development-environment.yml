@@ -24,6 +24,7 @@
       - php8.1-xml
       - php8.1-redis
       - php8.1-sqlite3
+      - php8.1-pdo-sqlite
       - php8.1-zip
       - php8.1-soap
       - composer # for php
