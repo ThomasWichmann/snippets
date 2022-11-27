@@ -14,6 +14,7 @@
     pkgs:
       - rsync
       - git
+      - git-cola
       - subversion
       - curl
       - php8.1
