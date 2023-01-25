@@ -33,6 +33,7 @@
       - openjdk-11-source
       - adoptopenjdk-11-hotspot
       - gradle
+      - kcachegrind # for xdebug profiling php applications
       - maven
       - pwgen # for generating random passwords
       - pandoc # for converting documents, for example MD to ODT
