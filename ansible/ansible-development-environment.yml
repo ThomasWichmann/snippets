@@ -60,6 +60,7 @@
       - recode
       - fasttrack-archive-keyring
       - virtualbox
+      - tnef # Microsoft Outlook email attachments using a proprietary format.
       
   tasks:
   
