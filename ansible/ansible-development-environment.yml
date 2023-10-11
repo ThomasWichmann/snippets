@@ -62,6 +62,8 @@
       - fasttrack-archive-keyring
       - virtualbox
       - tnef # Microsoft Outlook email attachments using a proprietary format.
+      - kubernetes-client
+      - helm
 
   tasks:
   
