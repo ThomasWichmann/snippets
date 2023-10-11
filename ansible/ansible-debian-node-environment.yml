@@ -69,29 +69,6 @@
       tags:
        - node-libs
 
-    - name: Add an apt signing key for yarn
-      apt_key:
-        url: https://dl.yarnpkg.com/debian/pubkey.gpg
-        state: present
-      environment:
-      #  https_proxy: "https://some-proxy-host:proxy-port"
-
-    - name: Add custom yarn repository
-      apt_repository:
-        repo: "{{ item }}"
-        state: present
-        filename: nodejs
-      loop:
-       - "deb https://dl.yarnpkg.com/debian/ stable main"
-         
-    - name: install yarn packages
-      package:
-         name: "{{ item }}"
-         state: latest
-         force: yes
-      loop:
-       - yarn
-        
     - name: Download Node Version Manager for handling multiple node versions see https://github.com/nvm-sh/nvm
       get_url: 
         url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh
