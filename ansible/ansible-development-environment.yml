@@ -45,7 +45,8 @@
       - libcanberra-gtk-module # for Netbeans 12
       - libcanberra-gtk3-module # for Netbeans 12
       - emacs
-      - openfortivpn # VPN client for Forti
+      - libappindicator1 # dependency for VPN client for Forti
+      - forticlient # VPN client for Forti
       - net-tools # for netstat etc
       - rdesktop # for remote access to Windows 
       - ffmpeg # for video processing tools
@@ -61,7 +62,7 @@
       - fasttrack-archive-keyring
       - virtualbox
       - tnef # Microsoft Outlook email attachments using a proprietary format.
-      
+
   tasks:
   
   - name: First instal additional key package
@@ -75,7 +76,9 @@
     loop:
      - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public
      - https://packages.sury.org/php/apt.gpg
-      
+     - https://repo.fortinet.com/repo/7.0/ubuntu/DEB-GPG-KEY
+     - https://repo.fortinet.com/repo/6.4/ubuntu/DEB-GPG-KEY
+
   - name: Add custom repository
     apt_repository:
       repo: "{{ item }}"
@@ -85,6 +88,8 @@
        - "deb https://packages.sury.org/php/ bullseye main" # for JDK 8 adoptopenjdk-8-hotspot
        - "deb https://fasttrack.debian.net/debian-fasttrack/ bullseye-fasttrack main contrib"
        - "deb https://fasttrack.debian.net/debian-fasttrack/ bullseye-backports-staging main contrib"
+       #- "deb [arch=amd64] https://repo.fortinet.com/repo/6.4/ubuntu/ /bionic multiverse"
+       - "deb [arch=amd64] https://repo.fortinet.com/repo/7.0/ubuntu xenial multiverse"
       
   - name: install packages for development
     package: name={{ pkgs }} state=present  
