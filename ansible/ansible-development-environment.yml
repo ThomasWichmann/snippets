@@ -41,6 +41,7 @@
       - texlive-latex-extra # helper packages for pandoc 
       - poedit # for editing gettext translations
       - libxml2-utils # xmllint
+      - pipenv
       - python3-pip # for python modules
       - libcanberra-gtk-module # for Netbeans 12
       - libcanberra-gtk3-module # for Netbeans 12
@@ -76,7 +77,8 @@
      url: "{{ item }}"
      state: present
     loop:
-     - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public
+     # outdated:
+     # - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public
      - https://packages.sury.org/php/apt.gpg
      - https://repo.fortinet.com/repo/7.0/ubuntu/DEB-GPG-KEY
      - https://repo.fortinet.com/repo/6.4/ubuntu/DEB-GPG-KEY
