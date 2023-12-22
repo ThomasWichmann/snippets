@@ -17,6 +17,11 @@ alias urlencode='python -c "import sys, urllib as ul; \
     print ul.quote_plus(sys.argv[1])"'
 alias jsonformat='python -m json.tool'
 
+# Other tools
+
+# Cleanup Eclipse Maven projects
+alias eclipse_cleanup='mvn clean eclipse:clean eclipse:eclipse'
+
 # SSH connection into Azure app service container
 alias sshazureapp='sshpass -p "Docker!" ssh root@127.0.0.1 -o "StrictHostKeyChecking no" -p '
 
