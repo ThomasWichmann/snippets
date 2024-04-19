@@ -64,7 +64,7 @@
       #- virtualbox # dependency issue on bullseye
       - tnef # Microsoft Outlook email attachments using a proprietary format.
       #- kubernetes-client # install issues on bullseye
-      - helm
+      #- helm
 
   tasks:
   
@@ -90,7 +90,8 @@
        - "deb https://fasttrack.debian.net/debian-fasttrack/ bullseye-fasttrack main contrib"
        - "deb https://fasttrack.debian.net/debian-fasttrack/ bullseye-backports-staging main contrib"
        - "deb [arch=amd64] https://repo.fortinet.com/repo/forticlient/7.2/ubuntu/ /stable multiverse"
-      
+       - "deb https://packages.sury.org/php/ bullseye main"
+       
   - name: install packages for development
     package: name={{ pkgs }} state=present  
 
