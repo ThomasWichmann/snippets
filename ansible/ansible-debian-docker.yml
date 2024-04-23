@@ -24,7 +24,7 @@
        - gnupg-agent
        - software-properties-common
        # for docker compose
-       # - python-pip does not exist for distro bullseye 
+       # - python-pip does not exist for distro 
        - python-dev
        - libffi-dev
        - libssl-dev
@@ -47,7 +47,7 @@
         state: present
         filename: docker
       loop:
-        - "deb https://download.docker.com/linux/debian bullseye stable"
+        - "deb https://download.docker.com/linux/debian bookworm stable"
         
     - name: install packages
       package: 

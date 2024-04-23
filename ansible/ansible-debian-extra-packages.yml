@@ -38,7 +38,7 @@
         - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ buster main"  # for powershell
         - "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" # terraform
         - "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
-        - "deb [arch=amd64] https://packages.microsoft.com/debian/11/prod bullseye main"
+        - "deb [arch=amd64] https://packages.microsoft.com/debian/11/prod bookworm main"
         
    - name: install
      package:
