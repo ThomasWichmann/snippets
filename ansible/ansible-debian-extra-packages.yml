@@ -35,7 +35,6 @@
        state: present
      loop:
         - "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main"
-        - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ bookworm main"  # for powershell
         - "deb [arch=amd64] https://apt.releases.hashicorp.com bookworm main" # terraform
         - "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
         - "deb [arch=amd64] https://packages.microsoft.com/debian/11/prod bookworm main"
@@ -47,7 +46,6 @@
      loop:
        - teams
        - powershell
-       - azure-cli
        - terraform
        - code # Visual Studio Code
        - dotnet-sdk-6.0

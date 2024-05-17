@@ -12,6 +12,7 @@
   
   vars:
     pkgs:
+      - azure-cli
       - rsync
       - git
       - git-cola
