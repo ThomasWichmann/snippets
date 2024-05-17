@@ -2,7 +2,7 @@
 # Install additional packages for an update to date NodeJS development
 # Installs newer version of Nodejs from external repository.
 #
-# Setup for Debian buster
+# Setup for Debian
 #
 # requirements: ansible needs to be installed
 # run with:
