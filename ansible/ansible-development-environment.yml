@@ -45,6 +45,7 @@
       - libxml2-utils # xmllint
       - pipenv
       - python3-pip # for python modules
+      - python3-venv # for using Python Venv
       - libcanberra-gtk-module # for Netbeans 12
       - libcanberra-gtk3-module # for Netbeans 12
       - emacs
