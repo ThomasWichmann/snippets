@@ -83,6 +83,7 @@
      - https://repo.fortinet.com/repo/7.0/ubuntu/DEB-GPG-KEY
      - https://repo.fortinet.com/repo/6.4/ubuntu/DEB-GPG-KEY
      - https://repo.fortinet.com/repo/forticlient/7.2/ubuntu/DEB-GPG-KEY
+     - https://packages.microsoft.com/keys/microsoft.asc
 
   - name: Add custom repository
     apt_repository:
@@ -93,20 +94,21 @@
        - "deb https://fasttrack.debian.net/debian-fasttrack/ bullseye-backports-staging main contrib"
        - "deb [arch=amd64] https://repo.fortinet.com/repo/forticlient/7.2/ubuntu/ /stable multiverse"
        - "deb https://packages.sury.org/php/ bookworm main"
-       
+       - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli bookworm main"
+
   - name: install packages for development
     package: name={{ pkgs }} state=present  
 
-  - name: Install additional python modules
-    pip:
-       name: "{{ item }}"
-    loop:
-      - ansible-lint # lint playbooks
-    environment:
-      # In case of behing proxy environments pip requires proxy settings in 
-      # capitalized variables. 
-      #HTTP_PROXY: http://proxy.example.domain:8080
-      #HTTPS_PROXY: http://proxy.example.domain:8080
+  # - name: Install additional python modules
+  #   pip:
+  #      name: "{{ item }}"
+  #   loop:
+  #     - ansible-lint # lint playbooks
+  #   environment:
+  #     # In case of behing proxy environments pip requires proxy settings in 
+  #     # capitalized variables. 
+  #     #HTTP_PROXY: http://proxy.example.domain:8080
+  #     #HTTPS_PROXY: http://proxy.example.domain:8080
 
   - name: install snaps for development
     community.general.snap: 
