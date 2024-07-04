@@ -16,6 +16,7 @@
       - rsync
       - git
       - git-cola
+      - imagemagick
       - subversion
       - curl
       - php8.1
