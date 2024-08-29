@@ -28,6 +28,9 @@ alias sshazureapp='sshpass -p "Docker!" ssh root@127.0.0.1 -o "StrictHostKeyChec
 # Show process binding port: usage netstatportprocess [port]
 alias netstatportprocess='netstat -nlp | grep '
 
+# Show java alternative installations on Debian
+alias update-java-alternatives-list='sudo update-java-alternatives -l'
+
 
 
 
