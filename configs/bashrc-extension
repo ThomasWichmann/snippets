@@ -31,6 +31,9 @@ alias netstatportprocess='netstat -nlp | grep '
 # Show java alternative installations on Debian
 alias update-java-alternatives-list='sudo update-java-alternatives -l'
 
+# Set java version
+alias update-java-alternatives-set-java-11='sudo update-java-alternatives -s java-1.11.0-openjdk-amd64'
+alias update-java-alternatives-set-java-17='sudo update-java-alternatives -s java-1.17.0-openjdk-amd64'
 
 
 
