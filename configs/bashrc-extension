@@ -35,6 +35,8 @@ alias update-java-alternatives-list='sudo update-java-alternatives -l'
 alias update-java-alternatives-set-java-11='sudo update-java-alternatives -s java-1.11.0-openjdk-amd64'
 alias update-java-alternatives-set-java-17='sudo update-java-alternatives -s java-1.17.0-openjdk-amd64'
 
+# Nodejs update dependencies in package.json
+alias npx-check-updates='npx npm-check-updates -u'
 
 
 
