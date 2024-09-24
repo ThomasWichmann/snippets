@@ -94,8 +94,8 @@
       repo: "{{ item }}"
       state: present
     loop:
-       - "deb https://fasttrack.debian.net/debian-fasttrack/ bullseye-fasttrack main contrib"
-       - "deb https://fasttrack.debian.net/debian-fasttrack/ bullseye-backports-staging main contrib"
+       - "deb https://fasttrack.debian.net/debian-fasttrack/ bookworm-fasttrack main contrib"
+       - "deb https://fasttrack.debian.net/debian-fasttrack/ bookworm-backports-staging main contrib"
        - "deb [arch=amd64] https://repo.fortinet.com/repo/forticlient/7.2/ubuntu/ /stable multiverse"
        - "deb https://packages.sury.org/php/ bookworm main"
        - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli bookworm main"
