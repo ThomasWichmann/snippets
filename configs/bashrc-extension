@@ -38,5 +38,6 @@ alias update-java-alternatives-set-java-17='sudo update-java-alternatives -s jav
 # Nodejs update dependencies in package.json
 alias npx-check-updates='npx npm-check-updates -u'
 
-
-
+docker-shell() {
+    sudo docker exec -it "$@" /bin/bash
+}
