@@ -101,6 +101,8 @@
        - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli bookworm main"
        - "deb https://packages.opentofu.org/opentofu/tofu/any/ any main"
        - "deb-src https://packages.opentofu.org/opentofu/tofu/any/ any main"
+       - "deb http://deb.debian.org/debian bullseye main"
+       - "deb-src http://deb.debian.org/debian bullseye main"
 
   - name: install packages for development
     package: name={{ pkgs }} state=present  
