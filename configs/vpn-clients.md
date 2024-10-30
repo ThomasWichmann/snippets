@@ -14,5 +14,4 @@ https://campus.barracuda.com/product/networkaccessclient/doc/168104020/how-to-co
 
 As root:
 
-    export TERM=xterm
-    barracudavpn
+    export TERM=xterm && barracudavpn
