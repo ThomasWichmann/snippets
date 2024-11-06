@@ -44,4 +44,4 @@ docker-shell() {
 
 # Git helpers
 alias git-init-submodules='git submodule update --init --recursive'
-alias git-pull-submodules='git submodule update --remote --merge'
+alias git-pull-submodules='git submodule update --remote --merge --recursive'
