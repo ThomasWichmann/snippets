@@ -1,0 +1,29 @@
+---
+# Install common extra packages
+#
+# requirements: ansible needs to be installed
+# run with:
+# ansible-playbook -K ansible-common-packages.yml
+#
+- name: Customize development environment
+  hosts: 127.0.0.1
+  connection: local
+  become: true
+  
+  vars:
+    pkgs:
+      - ausweisapp
+
+  tasks:
+
+  - name: Add custom repository
+    apt_repository:
+      repo: "{{ item }}"
+      state: present
+    loop:
+       - "deb http://deb.debian.org/debian bookworm-backports main contrib non-free non-free-firmware"
+
+  - name: install common extra packages
+    package: name={{ pkgs }} state=present  
+
+...
