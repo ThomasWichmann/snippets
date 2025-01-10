@@ -124,5 +124,6 @@
     loop:
       - postman # for web api testing
       - slack # team collaboration
+      - kubelogin # for Azure AKS (Kubernetes) login
 
 ...
