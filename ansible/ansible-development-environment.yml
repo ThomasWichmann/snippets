@@ -13,6 +13,7 @@
   vars:
     pkgs:
       - azure-cli
+      - docker-compose
       - rsync
       - git
       - git-cola
