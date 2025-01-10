@@ -67,8 +67,7 @@
       - fasttrack-archive-keyring
       #- virtualbox # dependency issue on bullseye
       - tnef # Microsoft Outlook email attachments using a proprietary format.
-      #- kubernetes-client # install issues on bullseye
-      #- helm
+      - helm
       - tofu
 
   tasks:
