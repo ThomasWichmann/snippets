@@ -124,6 +124,15 @@
     loop:
       - postman # for web api testing
       - slack # team collaboration
-      - kubelogin # for Azure AKS (Kubernetes) login
+      # For Azure AKS (Kubernetes) login. 
+      # In case of Azure AKS for AAD enabled cluster you better install with
+      # sudo az aks install-cli 
+      # to not get errors like: 
+      - kubelogin 
+
+  - name: Install kubelogin with the Azure "az" CLI command
+    ansible.builtin.command: az aks install-cli 
+    tags:
+      - kubelogin
 
 ...
