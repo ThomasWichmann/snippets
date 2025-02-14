@@ -4,13 +4,10 @@ Optimized for very special requirements. So this might not be widespread usable 
 
 ## Trouble shooting
 
-In case of errors 
+In case of errors
 
-	ERROR! couldn't resolve module/action 'community.general.snap'. This often indicates a misspelling, missing collection, or incorrect module path.
-	
+    ERROR! couldn't resolve module/action 'community.general.snap'. This often indicates a misspelling, missing collection, or incorrect module path.
+
 run
 
-	ansible-galaxy collection install community.general
-	
-	
-
+    ansible-galaxy collection install community.general
