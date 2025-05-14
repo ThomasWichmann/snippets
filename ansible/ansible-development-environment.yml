@@ -13,6 +13,7 @@
   vars:
     pkgs:
       - azure-cli
+      - ddev # for local PHP development with docker
       - docker-compose
       - rsync
       - git
@@ -88,6 +89,7 @@
      - https://packages.microsoft.com/keys/microsoft.asc
      - https://get.opentofu.org/opentofu.gpg
      - https://packages.opentofu.org/opentofu/tofu/gpgkey
+     - https://pkg.ddev.com/apt/gpg.key
 
   - name: Add custom repository
     apt_repository:
@@ -103,6 +105,7 @@
        - "deb-src https://packages.opentofu.org/opentofu/tofu/any/ any main"
        - "deb http://deb.debian.org/debian bullseye main"
        - "deb-src http://deb.debian.org/debian bullseye main"
+       - "deb https://pkg.ddev.com/apt/ * *"
 
   - name: install packages for development
     package: name={{ pkgs }} state=present  
