@@ -36,7 +36,7 @@
      loop:
         - "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main"
         - "deb https://apt.releases.hashicorp.com bookworm main" # terraform
-        #- "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
+        - "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
         - "deb [arch=amd64] https://packages.microsoft.com/debian/12/prod bookworm main"
         
    - name: install
