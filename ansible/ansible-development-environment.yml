@@ -18,6 +18,7 @@
       - rsync
       - git
       - git-cola
+      - gtimelog # time tracking
       - imagemagick
       - subversion
       - curl
