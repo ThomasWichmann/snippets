@@ -47,3 +47,7 @@ docker-shell() {
 # Git helpers
 alias git-init-submodules='git submodule update --init --recursive'
 alias git-pull-submodules='git submodule update --remote --merge --recursive'
+
+alias suspend-disabled='sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target'
+alias suspend-enabled='sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target'
+
