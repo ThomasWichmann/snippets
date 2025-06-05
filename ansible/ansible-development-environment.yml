@@ -71,6 +71,7 @@
       - tnef # Microsoft Outlook email attachments using a proprietary format.
       #- helm
       - tofu
+      - yarn
 
   tasks:
   
@@ -91,6 +92,7 @@
      - https://get.opentofu.org/opentofu.gpg
      - https://packages.opentofu.org/opentofu/tofu/gpgkey
      - https://pkg.ddev.com/apt/gpg.key
+     - https://dl.yarnpkg.com/debian/pubkey.gpg
 
   - name: Add custom repository
     apt_repository:
@@ -107,6 +109,7 @@
        - "deb http://deb.debian.org/debian bullseye main"
        - "deb-src http://deb.debian.org/debian bullseye main"
        - "deb https://pkg.ddev.com/apt/ * *"
+       - "deb https://dl.yarnpkg.com/debian/ stable main"
 
   - name: install packages for development
     package: name={{ pkgs }} state=present  
