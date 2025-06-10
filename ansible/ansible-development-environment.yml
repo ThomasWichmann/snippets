@@ -137,6 +137,9 @@
       # to not get errors like: 
       - kubelogin 
 
+  - name: Install eclipse IDE
+    ansible.builtin.command: snap install eclipse --classic # requires classic confinement
+
   - name: Install kubelogin with the Azure "az" CLI command
     ansible.builtin.command: az aks install-cli 
     tags:
