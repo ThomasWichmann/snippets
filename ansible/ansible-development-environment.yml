@@ -48,6 +48,7 @@
       - poedit # for editing gettext translations
       - libxml2-utils # xmllint
       - pipenv
+      - python-jinja2 # for ansible templating
       - python3-pip # for python modules
       - python3-venv # for using Python Venv
       - libcanberra-gtk-module # for Netbeans 12
