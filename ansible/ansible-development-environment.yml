@@ -46,6 +46,7 @@
       - texlive-latex-recommended # helper packages for pandoc 
       - texlive-latex-extra # helper packages for pandoc 
       - poedit # for editing gettext translations
+      - libfuse2 # required by Jetbrains Toolbox App 
       - libxml2-utils # xmllint
       - pipenv
       - python-jinja2 # for ansible templating
