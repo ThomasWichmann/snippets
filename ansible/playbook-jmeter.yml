@@ -1,17 +1,18 @@
 ---
 # Installs and sets up Apache JMeter for performance testing.
 #
-# The jmeter install is done on localhost in the users bin directory in {{ ansible_env.HOME }}/bin/jmeter
+# The jmeter install is done on localhost in the users bin directory 
+# in {{ ansible_env.HOME }}/bin/jmeter/...
 # If the bin directory does not exist the setup will fail.
 #
 # Usage:
-# ansible-playbook -K playbook-jmeter.yml
+# ansible-playbook playbook-jmeter.yml
 #
 
 - name: Run Apache Jmeter test - for now only preparation
   hosts: 127.0.0.1
   connection: local
-  become: true
+  become: false
   vars:
     - jmeter_sub_path: /apache-jmeter-5.6.3
     - jmeter_dl_archive: https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
@@ -19,6 +20,13 @@
     - jmeter_base_dir: "{{ ansible_env.HOME }}/bin/jmeter"
 
   tasks:  
+
+  - name: Create JMeter base directory
+    ansible.builtin.file:
+      path: '{{ jmeter_base_dir }}'
+      state: directory
+    tags:
+     - setup
 
   - name: Download jmeter
     ansible.builtin.get_url:
