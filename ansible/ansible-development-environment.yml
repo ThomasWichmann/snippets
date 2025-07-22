@@ -47,6 +47,7 @@
       - texlive-latex-extra # helper packages for pandoc 
       - poedit # for editing gettext translations
       - libfuse2 # required by Jetbrains Toolbox App 
+      - libimage-exiftool-perl # also installs exiftool CLI tool
       - libxml2-utils # xmllint
       - pipenv
       - python-jinja2 # for ansible templating
