@@ -22,17 +22,17 @@
       - imagemagick
       - subversion
       - curl
-      - php8.1
-      - php8.1-curl
-      - php8.1-gd
-      - php8.1-intl
-      - php8.1-mbstring
-      - php8.1-xml
-      - php8.1-redis
-      - php8.1-sqlite3
-      - php8.1-pdo-sqlite
-      - php8.1-zip
-      - php8.1-soap
+      - php8.2
+      - php8.2-curl
+      - php8.2-gd
+      - php8.2-intl
+      - php8.2-mbstring
+      - php8.2-xml
+      - php8.2-redis
+      - php8.2-sqlite3
+      - php8.2-pdo-sqlite
+      - php8.2-zip
+      - php8.2-soap
       - composer # for php
       - openjdk-11-jdk
       - openjdk-11-source
@@ -87,7 +87,6 @@
      url: "{{ item }}"
      state: present
     loop:
-     - https://packages.sury.org/php/apt.gpg
      - https://repo.fortinet.com/repo/7.0/ubuntu/DEB-GPG-KEY
      - https://repo.fortinet.com/repo/6.4/ubuntu/DEB-GPG-KEY
      - https://repo.fortinet.com/repo/forticlient/7.2/ubuntu/DEB-GPG-KEY
@@ -105,7 +104,6 @@
        - "deb https://fasttrack.debian.net/debian-fasttrack/ bookworm-fasttrack main contrib"
        - "deb https://fasttrack.debian.net/debian-fasttrack/ bookworm-backports-staging main contrib"
        - "deb [arch=amd64] https://repo.fortinet.com/repo/forticlient/7.2/ubuntu/ /stable multiverse"
-       - "deb https://packages.sury.org/php/ bookworm main"
        - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli bookworm main"
        - "deb https://packages.opentofu.org/opentofu/tofu/any/ any main"
        - "deb-src https://packages.opentofu.org/opentofu/tofu/any/ any main"
