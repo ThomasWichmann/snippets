@@ -49,13 +49,16 @@
       loop:
         - "deb https://download.docker.com/linux/debian bookworm stable"
         
-    - name: install packages
-      package: 
-        name={{ item }} 
-        state=present  
-      loop:
-       - docker-ce
-       - docker-ce-cli
-       - containerd.io
+    # For now we prefere to install docker from standard debian repo
+    # - name: install packages
+    #   package: 
+    #     name={{ item }} 
+    #     state=present  
+    #   loop:
+    #    - docker-ce
+    #    - docker-ce-cli
+    #    # - containerd.io # probably replaced by standard package `containerd`
+    #    - docker-model-plugin
+
        
         
