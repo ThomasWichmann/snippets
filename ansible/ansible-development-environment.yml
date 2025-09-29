@@ -56,8 +56,6 @@
       - libcanberra-gtk-module # for Netbeans 12
       - libcanberra-gtk3-module # for Netbeans 12
       - emacs
-      - libappindicator1 # dependency for VPN client for Forti
-      - forticlient # VPN client for Forti
       - net-tools # for netstat etc
       - rdesktop # for remote access to Windows 
       - ffmpeg # for video processing tools
@@ -87,9 +85,6 @@
      url: "{{ item }}"
      state: present
     loop:
-     - https://repo.fortinet.com/repo/7.0/ubuntu/DEB-GPG-KEY
-     - https://repo.fortinet.com/repo/6.4/ubuntu/DEB-GPG-KEY
-     - https://repo.fortinet.com/repo/forticlient/7.2/ubuntu/DEB-GPG-KEY
      - https://packages.microsoft.com/keys/microsoft.asc
      - https://get.opentofu.org/opentofu.gpg
      - https://packages.opentofu.org/opentofu/tofu/gpgkey
@@ -103,7 +98,6 @@
     loop:
        - "deb https://fasttrack.debian.net/debian-fasttrack/ bookworm-fasttrack main contrib"
        - "deb https://fasttrack.debian.net/debian-fasttrack/ bookworm-backports-staging main contrib"
-       - "deb [arch=amd64] https://repo.fortinet.com/repo/forticlient/7.2/ubuntu/ /stable multiverse"
        - "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli bookworm main"
        - "deb https://packages.opentofu.org/opentofu/tofu/any/ any main"
        - "deb-src https://packages.opentofu.org/opentofu/tofu/any/ any main"
