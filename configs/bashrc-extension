@@ -51,3 +51,6 @@ alias git-pull-submodules='git submodule update --remote --merge --recursive'
 alias suspend-disabled='sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target'
 alias suspend-enabled='sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target'
 
+# This fixes color issues for `claude code`. Otherwise edit suggestions might not 
+# be completely visible.
+export COLORTERM=truecolor
