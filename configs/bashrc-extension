@@ -40,6 +40,8 @@ alias npx-check-updates='npx npm-check-updates -u'
 
 alias vpn-barracudavpn="sudo bash -c 'export TERM=xterm && barracudavpn'"
 
+alias docker-network-overview="docker network ls -q | xargs -I{} docker network inspect {} --format '{{.Name}}: {{range .IPAM.Config}}{{.Subnet}}{{end}}' 2>/dev/null"
+
 docker-shell() {
     sudo docker exec -it "$@" /bin/bash
 }
