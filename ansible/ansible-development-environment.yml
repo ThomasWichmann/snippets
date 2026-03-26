@@ -125,7 +125,6 @@
        name: "{{ item }}"
     loop:
       - postman # for web api testing
-      # - slack # team collaboration
       # For Azure AKS (Kubernetes) login. 
       # In case of Azure AKS for AAD enabled cluster you better install with
       # sudo az aks install-cli 
