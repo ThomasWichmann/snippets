@@ -5,7 +5,7 @@
 # run with:
 # ansible-playbook -K ansible-common-packages.yml
 #
-- name: Customize development environment
+- name: Common Debian customization
   hosts: 127.0.0.1
   connection: local
   become: true
@@ -13,6 +13,7 @@
   vars:
     pkgs:
       - ausweisapp
+      - extrepo
 
   tasks:
 
