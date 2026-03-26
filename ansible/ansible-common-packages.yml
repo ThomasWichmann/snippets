@@ -27,4 +27,24 @@
   - name: install common extra packages
     package: name={{ pkgs }} state=present  
 
+  - name: Enable non-free policy in extrepo
+    replace:
+      path: /etc/extrepo/config.yaml
+      regexp: '^# - non-free'
+      replace: '- non-free'
+
+  - name: Enable slack repo via extrepo                                                                                                                                  
+    command: extrepo enable slack                                                                                                                                        
+    args:                                                                                                                                                                
+      creates: /etc/apt/sources.list.d/extrepo_slack.sources                                                                                                             
+                                                                                                                                                                         
+  - name: Update apt cache
+    apt:
+      update_cache: yes
+
+  - name: Install slack
+    apt:
+      name: slack-desktop
+      state: present      
+
 ...
