@@ -17,6 +17,7 @@
       - docker-compose
       - rsync
       - git
+      - glab
       - git-cola
       - gtimelog # time tracking
       - imagemagick
