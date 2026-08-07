@@ -74,6 +74,7 @@
       #- helm
       - tofu
       - yarn
+      - yamllint
 
   tasks:
   
